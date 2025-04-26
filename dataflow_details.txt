@@ -1,0 +1,32 @@
+"""# Data Engineering Pipeline Flow - Azure
+
+1. **Raw Ingestion (Bronze Layer)**
+   - Source: GitHub repository
+   - Format: Parquet
+   - Storage: Azure Data Lake Gen2 - Bronze Container
+
+2. **Silver Layer (Data Transformation)**
+   - Notebook: `silver_notebook`
+   - Actions:
+     - Derive new columns like `model_category`, `Year`, and `RevPerUnit`
+     - Write cleaned dataset to Silver zone in ADLS
+
+3. **Gold Layer (Modeling and Dimensional Load)**
+   - Notebooks: `gold_dim_date`, `gold_dim_dealer`, `gold_fact_sales`, etc.
+   - Actions:
+     - Load DIM tables with surrogate keys
+     - Apply merge logic to update or insert using Delta Lake UPSERT (SCD1)
+     - Fact table joins all DIMs to form star schema
+
+4. **Incremental Load Logic**
+   - ADF pipeline with Lookup → Copy Data → Stored Proc (Watermark update)
+   - Supports re-runs without duplicate load
+
+5. **Power BI**
+   - Connected to Gold layer using DirectQuery
+   - Visualized trends by Dealer, Branch, Model, and Year
+
+6. **Unity Catalog**
+   - All tables managed under `cars_catalog` → `gold` schema
+   - Ensures governed data access and metadata tracking
+"""
