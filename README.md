@@ -1,6 +1,6 @@
 This project showcases an end-to-end Azure-based data engineering solution integrating various tools for ETL, data modeling, and reporting.
 
-## 🔧 Tools & Tech Stack
+##  Tools & Tech Stack
 - **Azure Data Lake Gen2** (Bronze, Silver, Gold zones)
 - **Azure Data Factory** for orchestrating ETL pipelines with watermarking
 - **Azure Databricks** using PySpark for transformation and dimensional modeling (SCD1)
@@ -8,19 +8,19 @@ This project showcases an end-to-end Azure-based data engineering solution integ
 - **Power BI** with DirectQuery for real-time reporting
 - **GitHub** for version control
 
-## 🧱 Architecture Layers
+##  Architecture Layers
 - **Bronze Layer**: Raw parquet files ingested from GitHub and stored in ADLS
 - **Silver Layer**: Cleaned, enriched, and transformed data with new columns (e.g., Year, RevPerUnit)
 - **Gold Layer**: Dimensional modeling (Fact and Dim tables) with surrogate keys and merge logic (UPSERT)
 
-## ⚙️ Features
+## Features
 - Incremental loading using Lookup + Stored Procedure in ADF
 - Surrogate key generation using `monotonically_increasing_id()`
 - SCD Type-1 implementation using DeltaTable merge
 - Unified schema managed in Unity Catalog
 - Power BI dashboards for business insights (KPIs like Revenue, Units Sold)
 
-## 📊 Dashboards
+## Dashboards
 - Units Sold per Dealer/Branch
 - Revenue per Product/Model
 - Time series by Year and Month
